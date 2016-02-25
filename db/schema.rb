@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160225213413) do
   enable_extension "plpgsql"
 
   create_table "auctions", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160225213413) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "auction_id"
-    t.decimal  "amount"
+    t.decimal  "amount",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
