@@ -37,6 +37,12 @@ group :development, :test do
   gem 'byebug'
   # Use capybara for workflow testing
   gem 'capybara'
+  # Use RSpec for testing
+  gem 'rspec-rails'
+  # Use launchy for webkit preview
+  gem 'launchy'
+  # Use faker for populating test data
+  gem 'faker'
 end
 
 group :development do
