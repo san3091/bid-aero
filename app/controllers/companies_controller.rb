@@ -5,12 +5,13 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    # @companies = Company.all
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    # @auction = current_user.auctions.all
   end
 
   # GET /companies/new
@@ -29,11 +30,10 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
+        redirect_to @company, notice: 'Company was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        # make sure the right error message gets sent to the user.
+        redirect_to root_path
       end
     end
   end

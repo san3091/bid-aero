@@ -6,9 +6,14 @@ class SessionController < ApplicationController
     @company = Company.
       find_by(name: params[:name]).
       try(:authenticate, params[:password])
-    return render action: 'new' unless @company
+    redirect_to root_path unless @company
 
-    sessions[:comany_id] = @company
-    redirect_to companies_path
+    sessions[:company_id] = @company
+    redirect_to @company 
+  end
+
+  def destroy
+    session[:company_id] = nil
+    redirect_to root_path
   end
 end
