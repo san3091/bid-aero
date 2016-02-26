@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   create_table "parts", force: :cascade do |t|
     t.string   "Description"
     t.string   "PartNum"
-    t.string   "SerialNum"
     t.integer  "MinQty"
     t.string   "Manufacturer"
     t.decimal  "MfgPrice"

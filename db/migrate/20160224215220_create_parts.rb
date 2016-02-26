@@ -3,7 +3,6 @@ class CreateParts < ActiveRecord::Migration
     create_table :parts do |t|
       t.string :Description
       t.string :PartNum
-      t.string :SerialNum
       t.integer :MinQty
       t.string :Manufacturer
       t.decimal :MfgPrice
