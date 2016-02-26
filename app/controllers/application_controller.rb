@@ -11,8 +11,5 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     redirect_to root_path unless current_user
-    p "*"*1000
-    p session[:company_id]
-    p "*"*1000
   end
 end

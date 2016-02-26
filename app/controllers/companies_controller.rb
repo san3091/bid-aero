@@ -27,9 +27,6 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-    p "*"*500
-    p company_params
-    p "*"*500
 
     if @company.save
       session[:company_id] = @company.id
