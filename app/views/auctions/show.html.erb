@@ -13,7 +13,7 @@
 <h2>Bids associated with this Auction</h2>
 <ul>
     <% @auction.bids.each do |bid| %>
-      <li> <%= link_to bid.amount %>
+      <li> <%= bid.amount %>
     <% end %>
 </ul>
 
