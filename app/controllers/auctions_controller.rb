@@ -17,9 +17,10 @@ class AuctionsController < ApplicationController
     @auction = Auction.new
   end
 
+# Commented out the edit method
   # GET /auctions/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /auctions
   # POST /auctions.json
@@ -37,19 +38,20 @@ class AuctionsController < ApplicationController
     end
   end
 
+# Commented out update method
   # PATCH/PUT /auctions/1
   # PATCH/PUT /auctions/1.json
-  def update
-    respond_to do |format|
-      if @auction.update(auction_params)
-        format.html { redirect_to @auction, notice: 'Auction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @auction }
-      else
-        format.html { render :edit }
-        format.json { render json: @auction.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @auction.update(auction_params)
+  #       format.html { redirect_to @auction, notice: 'Auction was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @auction }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @auction.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /auctions/1
   # DELETE /auctions/1.json

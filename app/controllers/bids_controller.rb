@@ -1,5 +1,5 @@
 class BidsController < ApplicationController
-  # before_action :set_bid, only: [:show, :edit, :update, :destroy]
+  before_action :set_bid, only: [:show, :edit, :update, :destroy]
 
 
 # Commented out index method
