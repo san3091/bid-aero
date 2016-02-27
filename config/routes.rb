@@ -9,8 +9,13 @@ Rails.application.routes.draw do
   delete 'logout' => 'session#destroy'
 
   resources :bids
+
+  resources :parts do
+    resources :inventory_parts
+    resources :auction_parts
+  end
   resources :auctions
-  resources :inventory_parts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
