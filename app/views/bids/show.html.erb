@@ -2,13 +2,13 @@
 
 <p>
   <strong>Auction:</strong>
-  <%= @bid.auction %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
   <%= @bid.amount %>
 </p>
+<p>
+  <strong>Auction:</strong>
+  <%= @bid.auction.name %>
+</p>
+
 
 <%= link_to 'Edit', edit_bid_path(@bid) %> |
-<%= link_to 'Back', bids_path %>
+<%= link_to 'Back', @bid.auction %>

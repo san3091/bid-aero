@@ -15,7 +15,7 @@ class SessionController < ApplicationController
     else
       redirect_to root_path, notice: "Wrong credentials"
     end
-
+    
   end
 
   def destroy
