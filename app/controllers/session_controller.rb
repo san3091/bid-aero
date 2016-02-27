@@ -1,6 +1,9 @@
 class SessionController < ApplicationController
 
   def new
+    if current_user
+      redirect_to company_path(session[:company_id])
+    end
   end
 
   def create
@@ -8,8 +11,9 @@ class SessionController < ApplicationController
       try(:authenticate, params[:login][:password])
     if @company
       session[:company_id] = @company.id
+      redirect_to @company
     else
-      redirect_to root_path, notice: "Wrong password"
+      redirect_to root_path, notice: "Wrong credentials"
     end
 
   end
