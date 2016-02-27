@@ -11,13 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160225225647) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "auction_parts", force: :cascade do |t|
     t.string   "Description"
@@ -32,6 +29,33 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   end
 
   add_index "auction_parts", ["part_id"], name: "index_auction_parts_on_part_id", using: :btree
+
+  create_table "auctions", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer  "auction_id"
+    t.decimal  "amount",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bids", ["auction_id"], name: "index_bids_on_auction_id", using: :btree
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.string   "email",           null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
   create_table "inventory_parts", force: :cascade do |t|
     t.string   "Description"
@@ -58,35 +82,6 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   end
 
   add_foreign_key "auction_parts", "parts"
-  add_foreign_key "inventory_parts", "parts"
-
-  create_table "companies", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
-  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
-
-  create_table "auctions", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "bids", force: :cascade do |t|
-    t.integer  "auction_id"
-    t.decimal  "amount",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "bids", ["auction_id"], name: "index_bids_on_auction_id", using: :btree
-
   add_foreign_key "bids", "auctions"
-
+  add_foreign_key "inventory_parts", "parts"
 end
