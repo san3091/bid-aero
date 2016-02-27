@@ -25,9 +25,12 @@ class AuctionPartsController < ApplicationController
   # POST /auction_parts.json
   def create
     @auction_part = AuctionPart.new(auction_part_params)
+    @part_match = Part.find_by(part_num: @auction_part.part_num)
 
     respond_to do |format|
-      if @auction_part.save
+      if @part_match
+        @auction_part.part = @part_match
+        @auction_part.save
         format.html { redirect_to @auction_part, notice: 'Auction part was successfully created.' }
         format.json { render :show, status: :created, location: @auction_part }
       else
@@ -69,6 +72,6 @@ class AuctionPartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auction_part_params
-      params.fetch(:auction_part, {})
+      params.require(:auction_part).permit(:part_num)
     end
 end

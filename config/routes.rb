@@ -10,10 +10,9 @@ Rails.application.routes.draw do
 
   resources :bids
 
-  resources :parts do
-    resources :inventory_parts
-    resources :auction_parts
-  end
+  resources :parts
+  resources :inventory_parts
+  resources :auction_parts
   resources :auctions
 
   # The priority is based upon order of creation: first created -> highest priority.

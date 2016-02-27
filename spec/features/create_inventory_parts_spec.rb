@@ -39,7 +39,7 @@ RSpec.feature "Inventory Part", type: :feature do
     # number of inventory parts after test
     after_count = InventoryPart.all.length
 
-    expect(after_count).to eq initial_count
+    expect(after_count).to be > initial_count
     expect(page.current_path).to eq '/inventory_parts/new'
   end
 end

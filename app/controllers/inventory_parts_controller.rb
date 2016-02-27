@@ -1,6 +1,6 @@
 class InventoryPartsController < ApplicationController
   before_action :set_inventory_part, only: [:show, :edit, :update, :destroy]
-  before_action :set_partcatalogue, only: [:create, :new]
+
 
   # GET /inventory_parts
   # GET /inventory_parts.json
@@ -70,11 +70,6 @@ class InventoryPartsController < ApplicationController
     def set_inventory_part
       @inventory_part = InventoryPart.find(params[:id])
     end
-
-    def set_partcatalogue
-      @part = Part.all
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def inventory_part_params
       params.require(:inventory_part).permit(:description, :part_num, :serial_num, :qty, :manufacturer)
