@@ -26,17 +26,19 @@ class InventoryPartsController < ApplicationController
   # POST /inventory_parts.json
   def create
     @inventory_part = InventoryPart.new(inventory_part_params)
+    @part_match = Part.find_by(part_num: @inventory_part.part_num)
 
     respond_to do |format|
       # if @part.include? Part.where(part_num: @inverntory_part.part_num).first
       # if @part.where(part_num: @inventory_part.part_num)
-      if Part.where(part_num: @inventory_part.part_num).empty?
-        format.html { redirect_to new_inventory_part_path }
-        format.json { render json: @inventory_part.errors, status: :unprocessable_entity }
-      else
+      if @part_match
+        @inventory_part.part = @part_match
         @inventory_part.save
         format.html { redirect_to @inventory_part, notice: 'Inventory part was successfully created.' }
         format.json { render :show, status: :created, location: @inventory_part }
+      else
+        format.html { redirect_to new_inventory_part_path }
+        format.json { render json: @inventory_part.errors, status: :unprocessable_entity }
       end
     end
   end
