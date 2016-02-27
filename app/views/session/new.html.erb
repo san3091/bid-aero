@@ -1,0 +1,22 @@
+<h1>Log in</h1>
+<%= form_for(:session, url: login_path) do |f| %>
+  <div>
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.submit 'Log in' %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to new_company_path 'Sign up' %> 
+</div>

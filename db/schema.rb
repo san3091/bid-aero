@@ -32,5 +32,16 @@ ActiveRecord::Schema.define(version: 20160225213413) do
 
   add_index "bids", ["auction_id"], name: "index_bids_on_auction_id", using: :btree
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.string   "email",           null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+
   add_foreign_key "bids", "auctions"
 end
