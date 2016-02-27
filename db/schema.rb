@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160225225647) do
     t.string   "description"
     t.string   "part_num"
     t.string   "manufacturer"
-    t.integer  "qty"
     t.decimal  "minimum_cycles_remaining"
     t.integer  "lead_time"
     t.datetime "created_at",               null: false
@@ -61,7 +60,6 @@ ActiveRecord::Schema.define(version: 20160225225647) do
     t.string   "description"
     t.string   "part_num"
     t.string   "serial_num"
-    t.integer  "qty"
     t.string   "manufacturer"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -74,7 +72,6 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   create_table "parts", force: :cascade do |t|
     t.string   "description"
     t.string   "part_num"
-    t.integer  "min_qty"
     t.string   "manufacturer"
     t.decimal  "mfg_price"
     t.datetime "created_at",   null: false

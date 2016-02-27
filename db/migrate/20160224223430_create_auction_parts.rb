@@ -4,7 +4,6 @@ class CreateAuctionParts < ActiveRecord::Migration
       t.string :description
       t.string :part_num
       t.string :manufacturer
-      t.integer :qty
       t.decimal :minimum_cycles_remaining
       t.integer :lead_time
 

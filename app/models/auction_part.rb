@@ -3,4 +3,4 @@ class AuctionPart < ActiveRecord::Base
   validates  :part_num, presence: true
 end
 
- # :manufacturer, :qty, :description
+ # :manufacturer, :description

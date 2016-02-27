@@ -4,7 +4,6 @@ class CreateInventoryParts < ActiveRecord::Migration
       t.string :description
       t.string :part_num
       t.string :serial_num
-      t.integer :qty
       t.string :manufacturer
 
       t.timestamps null: false
