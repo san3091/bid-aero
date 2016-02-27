@@ -1,4 +1,5 @@
 class Bid < ActiveRecord::Base
+  belongs_to :company
   belongs_to :auction
 
   def formatted_price

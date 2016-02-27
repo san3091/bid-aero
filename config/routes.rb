@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-
-  # root 'auctions#index'
-  # resources :auctions do
-  #   resources :bids
-
-
   root 'session#new'
 
   resources :companies

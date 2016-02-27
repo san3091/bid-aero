@@ -156,4 +156,5 @@ RSpec.describe CompaniesController, type: :controller do
     end
   end
 
+
 end

@@ -1,19 +1,26 @@
 class SessionController < ApplicationController
+
   def new
+    if current_user
+      redirect_to company_path(session[:company_id])
+    end
   end
 
   def create
-    @company = Company.
-      find_by(name: params[:name]).
-      try(:authenticate, params[:password])
-    redirect_to root_path unless @company
-
-    sessions[:company_id] = @company
-    redirect_to @company
+    @company = Company.find_by_email(params[:login][:email]).
+      try(:authenticate, params[:login][:password])
+    if @company
+      session[:company_id] = @company.id
+      redirect_to @company
+    else
+      redirect_to root_path, notice: "Wrong credentials"
+    end
+    
   end
 
   def destroy
     session[:company_id] = nil
     redirect_to root_path
   end
+
 end
