@@ -1,5 +1,5 @@
 class InventoryPart < ActiveRecord::Base
   belongs_to :part
-  validates :Description, :PartNum, :SerialNum, :Qty, :Manufacturer, presence: true
-  
+  validates :description, :part_num, :serial_num, :qty, :manufacturer, presence: true
+
 end

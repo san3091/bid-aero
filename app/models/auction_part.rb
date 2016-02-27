@@ -1,4 +1,4 @@
 class AuctionPart < ActiveRecord::Base
   belongs_to :part
-  validates :Description, :PartNum,  :Manufacturer, :Qty, presence: true
+  validates :description, :part_num, :manufacturer, :qty, presence: true
 end

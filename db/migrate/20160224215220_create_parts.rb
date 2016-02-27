@@ -1,11 +1,11 @@
 class CreateParts < ActiveRecord::Migration
   def change
     create_table :parts do |t|
-      t.string :Description
-      t.string :PartNum
-      t.integer :MinQty
-      t.string :Manufacturer
-      t.decimal :MfgPrice
+      t.string :description
+      t.string :part_num
+      t.integer :min_qty
+      t.string :manufacturer
+      t.decimal :mfg_price
 
       t.timestamps null: false
     end

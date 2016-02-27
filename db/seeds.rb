@@ -13,5 +13,5 @@ parts_database = [
 ]
 
 parts_database.each do |description, partnum, minqty, manufacturer, mfgprice|
-  Part.create(Description: description, PartNum: partnum, MinQty: minqty, Manufacturer: manufacturer, MfgPrice: mfgprice)
+  Part.create(description: description, part_num: partnum, min_qty: minqty, manufacturer: manufacturer, mfg_price: mfgprice)
 end

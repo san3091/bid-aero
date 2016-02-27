@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   enable_extension "plpgsql"
 
   create_table "auction_parts", force: :cascade do |t|
-    t.string   "Description"
-    t.string   "PartNum"
-    t.string   "Manufacturer"
-    t.integer  "Qty"
-    t.decimal  "Minimum_Cycles_Remaining"
-    t.integer  "Lead_Time"
+    t.string   "description"
+    t.string   "part_num"
+    t.string   "manufacturer"
+    t.integer  "qty"
+    t.decimal  "minimum_cycles_remaining"
+    t.integer  "lead_time"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "part_id"
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
   create_table "inventory_parts", force: :cascade do |t|
-    t.string   "Description"
-    t.string   "PartNum"
-    t.string   "SerialNum"
-    t.integer  "Qty"
-    t.string   "Manufacturer"
+    t.string   "description"
+    t.string   "part_num"
+    t.string   "serial_num"
+    t.integer  "qty"
+    t.string   "manufacturer"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "part_id"
@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   add_index "inventory_parts", ["part_id"], name: "index_inventory_parts_on_part_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
-    t.string   "Description"
-    t.string   "PartNum"
-    t.integer  "MinQty"
-    t.string   "Manufacturer"
-    t.decimal  "MfgPrice"
+    t.string   "description"
+    t.string   "part_num"
+    t.integer  "min_qty"
+    t.string   "manufacturer"
+    t.decimal  "mfg_price"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
