@@ -24,11 +24,23 @@ RSpec.describe InventoryPartsController, type: :controller do
   # InventoryPart. As you add validations to InventoryPart, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      description: "This is a good description",
+      part_num: "8063-215",
+      serial_num: "this is a serial number",
+      qty: 2,
+      manufacturer: "sysco"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      description: "This is a good description",
+      part_num: "asdf",
+      serial_num: "this is a serial number",
+      qty: 2,
+      manufacturer: "sysco"
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -87,7 +99,7 @@ RSpec.describe InventoryPartsController, type: :controller do
       end
     end
 
-    context "with invalid params" do
+    context "with a part number not in the Part database" do
       it "assigns a newly created but unsaved inventory_part as @inventory_part" do
         post :create, {:inventory_part => invalid_attributes}, valid_session
         expect(assigns(:inventory_part)).to be_a_new(InventoryPart)
