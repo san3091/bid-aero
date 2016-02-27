@@ -1,5 +1,6 @@
 class InventoryPartsController < ApplicationController
   before_action :set_inventory_part, only: [:show, :edit, :update, :destroy]
+  before_action :set_partcatalogue, only: [:create, :new]
 
   # GET /inventory_parts
   # GET /inventory_parts.json
@@ -27,7 +28,9 @@ class InventoryPartsController < ApplicationController
     @inventory_part = InventoryPart.new(inventory_part_params)
 
     respond_to do |format|
-      if @inventory_part.save
+      if @part.where(part_num: @inventory_part.part_num) = true
+
+        @inventory_part.save
         format.html { redirect_to @inventory_part, notice: 'Inventory part was successfully created.' }
         format.json { render :show, status: :created, location: @inventory_part }
       else
@@ -65,6 +68,10 @@ class InventoryPartsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_inventory_part
       @inventory_part = InventoryPart.find(params[:id])
+    end
+
+    def set_partcatalogue
+      @part = Part.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
