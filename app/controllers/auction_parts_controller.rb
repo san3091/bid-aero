@@ -29,6 +29,8 @@ class AuctionPartsController < ApplicationController
 
     respond_to do |format|
       if @part_match
+        build_params(@part_match, @auction_part)
+
         @auction_part.part = @part_match
         @auction_part.save
         format.html { redirect_to @auction_part, notice: 'Auction part was successfully created.' }
@@ -70,8 +72,14 @@ class AuctionPartsController < ApplicationController
       @auction_part = AuctionPart.find(params[:id])
     end
 
+    def build_params(part_match, auction_part)
+        auction_part.description = part_match.description
+        auction_part.manufacturer = part_match.manufacturer
+        auction_part.mfg_price = part_match.mfg_price
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def auction_part_params
-      params.require(:auction_part).permit(:part_num)
+      params.require(:auction_part).permit(:part_num, :description, :manufacturer)
     end
 end

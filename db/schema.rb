@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160225225647) do
     t.string   "description"
     t.string   "part_num"
     t.string   "manufacturer"
+    t.string   "mfg_price"
     t.decimal  "minimum_cycles_remaining"
     t.integer  "lead_time"
     t.datetime "created_at",               null: false
