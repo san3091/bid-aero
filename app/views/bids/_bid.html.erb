@@ -1,0 +1,5 @@
+<ul>
+    <% @auction.bids.each do |bid| %>
+      <li> <%= bid.formatted_price %>
+    <% end %>
+</ul>
