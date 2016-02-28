@@ -11,7 +11,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-    # @auction = current_user.auctions.all
+    @buyer_auctions = current_user.auctions
+    @bids = current_user.bids
   end
 
   # GET /companies/new
