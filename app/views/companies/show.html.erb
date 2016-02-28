@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,10 +11,12 @@
   <%= @company.email %>
 </p>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @company.password_digest %>
-</p>
+<h2> Auctions </h2>
 
+<% current_user.auctions.each do |auction| %>
+  <%= render auction %>
+<% end %>
+
+<%= link_to 'New Auction', new_company_auction_path(@company) %>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

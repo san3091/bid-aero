@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Description: MyString
+  PartNum: MyString
+  Manufacturer: MyString
+  Qty: 1
+  Minimum_Cycles_Remaining: 9.99
+  Lead_Time: 1
+
+two:
+  Description: MyString
+  PartNum: MyString
+  Manufacturer: MyString
+  Qty: 1
+  Minimum_Cycles_Remaining: 9.99
+  Lead_Time: 1
