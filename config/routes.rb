@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'signup' => 'company#new'
   get 'login' => 'session#new'
   post 'login' => 'session#create'
-  delete 'logout' => 'session#destroy'
+  get 'logout' => 'session#destroy'
 
   resources :auctions do
     resources :bids
