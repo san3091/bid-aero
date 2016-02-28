@@ -5,4 +5,5 @@ class Company < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 8 }
   has_many :auctions
   has_many :bids
+  has_many :inventory_parts
 end
