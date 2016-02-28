@@ -1,4 +1,4 @@
-<%= form_for(@auction) do |f| %>
+<%= form_for([@company, @auction]) do |f| %>
   <% if @auction.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@auction.errors.count, "error") %> prohibited this auction from being saved:</h2>

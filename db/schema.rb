@@ -11,17 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225213413) do
+ActiveRecord::Schema.define(version: 20160228023133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auction_parts", force: :cascade do |t|
+    t.string   "description"
+    t.string   "part_num"
+    t.string   "manufacturer"
+    t.integer  "qty"
+    t.decimal  "minimum_cycles_remaining"
+    t.integer  "lead_time"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "part_id"
+  end
+
+  add_index "auction_parts", ["part_id"], name: "index_auction_parts_on_part_id", using: :btree
 
   create_table "auctions", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "company_id"
   end
+
+  add_index "auctions", ["company_id"], name: "index_auctions_on_company_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
     t.integer  "auction_id"
@@ -43,5 +60,32 @@ ActiveRecord::Schema.define(version: 20160225213413) do
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
+  create_table "inventory_parts", force: :cascade do |t|
+    t.string   "description"
+    t.string   "part_num"
+    t.string   "serial_num"
+    t.integer  "qty"
+    t.string   "manufacturer"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "part_id"
+    t.boolean  "in_auction"
+  end
+
+  add_index "inventory_parts", ["part_id"], name: "index_inventory_parts_on_part_id", using: :btree
+
+  create_table "parts", force: :cascade do |t|
+    t.string   "description"
+    t.string   "part_num"
+    t.integer  "min_qty"
+    t.string   "manufacturer"
+    t.decimal  "mfg_price"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_foreign_key "auction_parts", "parts"
+  add_foreign_key "auctions", "companies"
   add_foreign_key "bids", "auctions"
+  add_foreign_key "inventory_parts", "parts"
 end

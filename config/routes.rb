@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+
+  # root 'auctions#index'
+  # resources :auctions do
+  #   resources :bids
+
+
   root 'session#new'
 
-  resources :companies
+  resources :companies do
+    resources :auctions 
+  end
 
   get 'signup' => 'company#new'
   get 'login' => 'session#new'

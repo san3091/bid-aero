@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
       session[:company_id] = @company.id
       redirect_to @company, notice: 'Company was successfully created.'
     else
-      redirect_to new_company_path 
+      redirect_to new_company_path
     end
   end
 
