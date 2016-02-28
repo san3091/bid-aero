@@ -11,11 +11,17 @@
 </p>
 
 <h2>Bids associated with this Auction</h2>
-<ul>
+
+<h2> Bids </h2>
+
+<% current_user.bids.each do |bid| %>
+  <%= render bid %>
+<% end %>
+<!-- <ul>
     <% @auction.bids.each do |bid| %>
       <li> <%= bid.formatted_price %>
     <% end %>
-</ul>
+</ul> -->
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>

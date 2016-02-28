@@ -110,7 +110,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+<<<<<<< HEAD
     rails-erd (1.4.5)
+=======
+    rails-erd (1.4.6)
+>>>>>>> 92b6cc9f408b3f849a573a1f67944cce83ad137c
       activerecord (>= 3.2)
       activesupport (>= 3.2)
       choice (~> 0.2.0)
