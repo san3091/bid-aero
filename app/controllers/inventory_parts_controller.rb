@@ -29,9 +29,9 @@ class InventoryPartsController < ApplicationController
     @part_match = Part.find_by(part_num: @inventory_part.part_num)
 
     respond_to do |format|
-      # if @part.include? Part.where(part_num: @inverntory_part.part_num).first
-      # if @part.where(part_num: @inventory_part.part_num)
       if @part_match
+        build_params(@part_match, @inventory_part)
+
         @inventory_part.part = @part_match
         @inventory_part.save
         format.html { redirect_to @inventory_part, notice: 'Inventory part was successfully created.' }
@@ -72,8 +72,14 @@ class InventoryPartsController < ApplicationController
     def set_inventory_part
       @inventory_part = InventoryPart.find(params[:id])
     end
+
+    def build_params(part_match, inventory_part)
+        inventory_part.description = part_match.description
+        inventory_part.manufacturer = part_match.manufacturer
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def inventory_part_params
-      params.require(:inventory_part).permit(:description, :part_num, :serial_num, :qty, :manufacturer)
+      params.require(:inventory_part).permit(:description, :part_num, :serial_num, :manufacturer)
     end
 end
