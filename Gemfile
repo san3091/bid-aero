@@ -44,6 +44,7 @@ group :development, :test do
   gem 'launchy'
   # Use faker for populating test data
   gem 'faker'
+  gem 'rails-erd', '~> 1.4', '>= 1.4.6'
 end
 
 group :development do
