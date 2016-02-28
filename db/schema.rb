@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228191634) do
+ActiveRecord::Schema.define(version: 20160228211711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 20160228191634) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "part_id"
+    t.integer  "auction_id"
   end
 
+  add_index "auction_parts", ["auction_id"], name: "index_auction_parts_on_auction_id", using: :btree
   add_index "auction_parts", ["part_id"], name: "index_auction_parts_on_part_id", using: :btree
 
   create_table "auctions", force: :cascade do |t|
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 20160228191634) do
     t.datetime "updated_at",   null: false
   end
 
+  add_foreign_key "auction_parts", "auctions"
   add_foreign_key "auction_parts", "parts"
   add_foreign_key "auctions", "companies"
   add_foreign_key "bids", "auctions"
