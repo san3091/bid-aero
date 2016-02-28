@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20160225225647) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "company_id"
   end
+
+  add_index "auctions", ["company_id"], name: "index_auctions_on_company_id", using: :btree
 
   create_table "bids", force: :cascade do |t|
     t.integer  "auction_id"
@@ -80,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160225225647) do
   end
 
   add_foreign_key "auction_parts", "parts"
+  add_foreign_key "auctions", "companies"
   add_foreign_key "bids", "auctions"
   add_foreign_key "inventory_parts", "parts"
 end

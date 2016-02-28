@@ -1,10 +1,11 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_company, only: [:new, :create]
+
   # GET /auctions
   # GET /auctions.json
   def index
-    @auctions = Auction.all
+    @auctions = current_user.auctions.all
   end
 
   # GET /auctions/1
@@ -26,9 +27,10 @@ class AuctionsController < ApplicationController
   # POST /auctions.json
   def create
     @auction = Auction.new(auction_params)
-
+    @company.auctions << @auction
     respond_to do |format|
       if @auction.save
+
         format.html { redirect_to @auction, notice: 'Auction was successfully created.' }
         format.json { render :show, status: :created, location: @auction }
       else
@@ -71,6 +73,10 @@ class AuctionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def auction_params
-      params.require(:auction).permit(:name, :description)
+      params.require(:auction).permit(:name, :description, :company_id)
+    end
+
+    def set_company
+      @company = Company.find(session[:company_id])
     end
 end

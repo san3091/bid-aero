@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in
+  before_action :require_logged_in, except: [:new, :create]
 
   # GET /companies
   # GET /companies.json
@@ -28,13 +28,11 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
 
-    respond_to do |format|
-      if @company.save
-        redirect_to @company, notice: 'Company was successfully created.' }
-      else
-        # make sure the right error message gets sent to the user.
-        redirect_to root_path
-      end
+    if @company.save
+      session[:company_id] = @company.id
+      redirect_to @company, notice: 'Company was successfully created.'
+    else
+      redirect_to new_company_path
     end
   end
 
@@ -70,6 +68,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :email, :password_digest)
+      params.require(:company).permit(:name, :email, :password, :password_confirmation)
     end
 end

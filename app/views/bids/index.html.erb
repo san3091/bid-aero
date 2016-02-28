@@ -15,8 +15,8 @@
     <% @bids.each do |bid| %>
       <tr>
         <td><%= bid.auction %></td>
-        <td><%= bid.amount %></td>
-        <td><%= link_to 'Show', bid %></td>
+        <td><%= bid.auction.name %></td>
+        <td><%= link_to 'Show', formatted_price %></td>
         <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
         <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -1,9 +1,8 @@
 <h1>Log in</h1>
-<%= form_for(:session, url: login_path) do |f| %>
-  <div>
-    <%= f.label :company_name %>
-    <%= f.text_field :company_name %>
-  </div>
+<div>
+  <%= notice %>
+</div>
+<%= form_for(:login, url: login_path) do |f| %>
   <div>
     <%= f.label :email %>
     <%= f.text_field :email %>
@@ -18,5 +17,5 @@
 <% end %>
 
 <div>
-  <%= link_to new_company_path 'Sign up' %> 
+  <%= link_to 'Sign up', new_company_path %> 
 </div>

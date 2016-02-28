@@ -1,19 +1,29 @@
 Rails.application.routes.draw do
+
+
+  # root 'auctions#index'
+  # resources :auctions do
+  #   resources :bids
+
+
   root 'session#new'
 
-  resources :companies
+  resources :companies do
+    resources :auctions
+  end
 
   get 'signup' => 'company#new'
   get 'login' => 'session#new'
   post 'login' => 'session#create'
   delete 'logout' => 'session#destroy'
 
-  resources :bids
-
   resources :parts
   resources :inventory_parts
   resources :auction_parts
-  resources :auctions
+  resources :auctions do
+    resources :bids
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
