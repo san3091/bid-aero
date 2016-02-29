@@ -1,11 +1,12 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:new, :create]
+  before_action :require_logged_in
 
   # GET /auctions
   # GET /auctions.json
   def index
     @auctions = current_user.auctions.all
+
   end
 
   # GET /auctions/1
@@ -16,6 +17,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/new
   def new
     @auction = Auction.new
+    @company = current_user
   end
 
 # Commented out the edit method
@@ -26,6 +28,7 @@ class AuctionsController < ApplicationController
   # POST /auctions
   # POST /auctions.json
   def create
+    @company = Company.find(session[:company_id])
     @auction = Auction.new(auction_params)
     @company.auctions << @auction
     respond_to do |format|
@@ -76,7 +79,7 @@ class AuctionsController < ApplicationController
       params.require(:auction).permit(:name, :description, :company_id)
     end
 
-    def set_company
-      @company = Company.find(session[:company_id])
-    end
+    # def set_company
+    #   @company = Company.find(session[:company_id])
+    # end
 end
