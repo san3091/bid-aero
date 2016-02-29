@@ -30,9 +30,7 @@ class AuctionsController < ApplicationController
     @company.auctions << @auction
     respond_to do |format|
       if @auction.save
-        p"*"*300
-        p params
-        p"*"*300
+
         format.html { redirect_to @auction, notice: 'Auction was successfully created.' }
         format.json { render :show, status: :created, location: @auction }
       else

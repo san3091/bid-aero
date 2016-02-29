@@ -2,10 +2,6 @@
 
 <h1>Listing Inventory Parts</h1>
 
-<% @company.inventory_parts.each do |part| %>
-<div><%= part.part_num %></div>
-<% end %>
-
 <table>
   <thead>
     <tr>
@@ -17,7 +13,7 @@
     <% @inventory_parts.each do |inventory_part| %>
       <tr>
         <td><%= link_to 'Show', inventory_part %></td>
-        <td><%=  link_to 'Edit', edit_company_inventory_part_path(@company, inventory_part) %></td>
+        <td><%= link_to 'Edit', edit_inventory_part_path(inventory_part) %></td>
         <td><%= link_to 'Destroy', inventory_part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Inventory part', new_company_inventory_part_path %>
+<%= link_to 'New Inventory part', new_inventory_part_path %>
