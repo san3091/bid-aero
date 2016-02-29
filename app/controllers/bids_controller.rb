@@ -1,6 +1,7 @@
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show]
   before_action :set_auction, only: [:new, :create]
+  before_action :require_logged_in
 
 
   # Commented out index method
