@@ -34,6 +34,7 @@ class InventoryPartsController < ApplicationController
 
         @inventory_part.part = @part_match
         @inventory_part.save
+
         format.html { redirect_to @inventory_part, notice: 'Inventory part was successfully created.' }
         format.json { render :show, status: :created, location: @inventory_part }
       else
