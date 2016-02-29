@@ -1,11 +1,16 @@
 
-<p>
-  <strong>Auction Name:</strong>
+<div>
+  <h2>Name:</h2>
   <%= auction.name %>
-  <%= @company.id %>
-</p>
+  <%= auction.company.name %>
+</div>
 
-<p>
-  <strong>Description of Auction:</strong>
+<div>
+  <h2>Description:</h2>
   <%= auction.description %>
-</p>
+</div>
+
+<div>
+  <h2>Top bid:</h2>
+  <%# render @top_bid %>
+</div>
