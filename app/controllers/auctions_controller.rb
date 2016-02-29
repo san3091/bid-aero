@@ -1,6 +1,5 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in
 
   # GET /auctions
   # GET /auctions.json

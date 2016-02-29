@@ -1,6 +1,5 @@
 class AuctionPartsController < ApplicationController
   before_action :set_auction_part, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in
 
   # GET /auction_parts
   # GET /auction_parts.json

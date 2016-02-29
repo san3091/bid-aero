@@ -1,6 +1,5 @@
 class InventoryPartsController < ApplicationController
   before_action :set_inventory_part, only: [:show, :edit, :update, :destroy]
-  before_action :requre_logged_in
 
 
   # GET /inventory_parts
