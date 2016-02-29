@@ -1,6 +1,6 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in
+
 
   # GET /auctions
   # GET /auctions.json
@@ -12,6 +12,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/1
   # GET /auctions/1.json
   def show
+    @top_bid = @auction.bids.first
   end
 
   # GET /auctions/new

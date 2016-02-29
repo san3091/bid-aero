@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Company logs in", type: :feature do
 
   scenario "with good credentials" do
-    Company.create(name: "AeroCompany", email: "aero@aero.aero", password: "password")
+    company = Company.create(name: "AeroCompany", email: "aero@aero.aero", password: "password")
 
     visit root_path
 
@@ -11,7 +11,7 @@ RSpec.feature "Company logs in", type: :feature do
     fill_in 'Password', with: 'password'
     click_button 'Log in'
     
-    expect(page.current_path).to eq company_path(11)
+    expect(page.current_path).to eq company_path(company)
     expect(page).to have_content("AeroCompany")
   end
 

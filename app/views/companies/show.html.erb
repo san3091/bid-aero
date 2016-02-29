@@ -6,17 +6,23 @@
   <%= @company.name %>
 </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @company.email %>
-</p>
-
-<h2> Auctions </h2>
-
-<% current_user.auctions.each do |auction| %>
-  <%= render auction %>
-<% end %>
-
+<div class="auction">
+  <h1>Your auctions:</h1>
+  <% @buyer_auctions.each do |auction| %>
+    <%= link_to auction do %>
+      <%= render auction %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <h1>Your bids:</h1>
+    <% @bids.each do |bid| %>
+      <%= link_to bid.auction do %>
+        <%= render bid.auction %>
+      <% end %>
+    <% end %>
+</div>
+<%= link_to 'Inventory', inventory_parts_path %> |
 <%= link_to 'New Auction', new_company_auction_path(@company) %>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

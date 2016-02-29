@@ -1,6 +1,5 @@
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show]
-  before_action :require_logged_in
 
 
     # GET /bids
