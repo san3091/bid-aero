@@ -1,7 +1,6 @@
 class InventoryPartsController < ApplicationController
   before_action :set_inventory_part, only: [:show, :edit, :update, :destroy]
 
-
   # GET /inventory_parts
   # GET /inventory_parts.json
   def index
