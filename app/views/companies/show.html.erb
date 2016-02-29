@@ -6,7 +6,7 @@
   <%= @company.name %>
 </p>
 
-<div>
+<div class="auction">
   <h1>Your auctions:</h1>
   <% @buyer_auctions.each do |auction| %>
     <%= link_to auction do %>
@@ -22,6 +22,7 @@
       <% end %>
     <% end %>
 </div>
+<%= link_to 'Inventory', inventory_parts_path %> |
 <%= link_to 'New Auction', new_company_auction_path(@company) %>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
