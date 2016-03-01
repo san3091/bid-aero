@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   post 'login' => 'session#create'
   get 'logout' => 'session#destroy'
 
-resources :inventory_parts
+  resources :inventory_parts
 
-resources :companies do
-  resources :auctions
-end
+  resources :companies do
+    resources :auctions
+  end
 
   resources :auctions do
     resources :auction_parts
