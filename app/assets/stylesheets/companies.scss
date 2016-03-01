@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#company_name{
+  text-align: center;
+}
+
 #auction_list, #bid_list {
   float: left;
   width: 45%;

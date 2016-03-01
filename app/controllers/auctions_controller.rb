@@ -14,6 +14,7 @@ class AuctionsController < ApplicationController
   def show
     @top_bid = @auction.bids.first
     @bid = Bid.where(auction_id: @auction.id)
+    # @auction_part = AuctionPart.where
   end
 
   # GET /auctions/new
@@ -48,17 +49,17 @@ class AuctionsController < ApplicationController
 # Commented out update method
   # PATCH/PUT /auctions/1
   # PATCH/PUT /auctions/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @auction.update(auction_params)
-  #       format.html { redirect_to @auction, notice: 'Auction was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @auction }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @auction.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @auction.update(auction_params)
+        format.html { redirect_to @auction, notice: 'Auction was successfully updated.' }
+        format.json { render :show, status: :ok, location: @auction }
+      else
+        format.html { render :edit }
+        format.json { render json: @auction.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /auctions/1
   # DELETE /auctions/1.json
