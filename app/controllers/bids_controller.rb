@@ -30,6 +30,7 @@ class BidsController < ApplicationController
   def create
     # @bid = Bid.new(bid_params)
     @bid = @auction.bids.new(bid_params)
+    @bid.company = current_user
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @auction, notice: 'Bid was successfully created.' }
