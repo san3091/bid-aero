@@ -1,24 +1,17 @@
-<!-- <ul>
-  <%= current_user.name %>
-  <li> <%= bid.formatted_price %>
-</ul> -->
 
+<table>
+  <thead>
+    <tr>
+      <th>Amount:</th>
+      <th>Company:</th>
 
+    </tr>
+  </thead>
 
-
-  <table>
-    <thead>
+  <tbody>
       <tr>
-        <th>Amount</th>
-        <th>Company</th>
-
+        <td><%= bid.formatted_price %></td>
+        <td><%= current_user.name %></td>
+        <td><%= link_to 'Destroy', auction_bid_path(@auction, bid), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-          <td><%= bid.formatted_price %></td>
-          <td><%= current_user.name %></td>
-          <td><%= link_to 'Destroy', auction_bid_path(@auction, bid), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-  </table>
+</table>

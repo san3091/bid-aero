@@ -13,7 +13,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/1.json
   def show
     @top_bid = @auction.bids.first
-    
+    @bid = Bid.where(auction_id: @auction.id)
   end
 
   # GET /auctions/new
