@@ -13,6 +13,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/1.json
   def show
     @top_bid = @auction.bids.first
+    @bid = current_user.bids
   end
 
   # GET /auctions/new
@@ -29,9 +30,9 @@ class AuctionsController < ApplicationController
   # POST /auctions
   # POST /auctions.json
   def create
-    @company = Company.find(session[:company_id])
+
     @auction = Auction.new(auction_params)
-    @company.auctions << @auction
+    current_user.auctions << @auction
     respond_to do |format|
       if @auction.save
 

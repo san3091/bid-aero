@@ -1,11 +1,12 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: [:show]
+  before_action :set_bid, only: [:show, :destroy]
+  before_action :set_auction, only: [:new, :create]
 
 
     # GET /bids
     # GET /bids.json
   def index
-      @bids = current_user.bids.
+      @bids = current_user.bids.all
   end
 
     # GET /bids/1
@@ -16,7 +17,7 @@ class BidsController < ApplicationController
   # GET /bids/new
   def new
     @bid = Bid.new
-    @company = current_user
+    # @company = current_user
   end
 
   # Commented out edit method
@@ -28,7 +29,9 @@ class BidsController < ApplicationController
   # POST /bids.json
   def create
     # @bid = Bid.new(bid_params)
+    # @bid = Bid.new(bid_params)
     @bid = @auction.bids.new(bid_params)
+    # current_user.bids << @bid
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @auction, notice: 'Bid was successfully created.' }
@@ -63,7 +66,7 @@ class BidsController < ApplicationController
   def destroy
     @bid.destroy
     respond_to do |format|
-      format.html { redirect_to bids_url, notice: 'Bid was successfully destroyed.' }
+      format.html { redirect_to auction_bids_url, notice: 'Bid was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,7 +82,7 @@ class BidsController < ApplicationController
       params.require(:bid).permit(:auction_id, :amount, :company_id)
     end
 
-    # def set_auction
-    #   @auction = Auction.find(params[:auction_id])
-    # end
+    def set_auction
+      @auction = Auction.find(params[:auction_id])
+    end
 end
