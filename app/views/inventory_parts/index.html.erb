@@ -12,6 +12,10 @@
   <tbody>
     <% @inventory_parts.each do |inventory_part| %>
       <tr>
+      <%= inventory_part.part_num %>
+      <%= inventory_part.description %>
+      <%= inventory_part.serial_num %>
+      <%= inventory_part.manufacturer %>
         <td><%= link_to 'Show', inventory_part %></td>
         <td><%= link_to 'Edit', edit_inventory_part_path(inventory_part) %></td>
         <td><%= link_to 'Destroy', inventory_part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,3 +27,4 @@
 <br>
 
 <%= link_to 'New Inventory part', new_inventory_part_path %>
+<%= link_to 'Back', current_user %>
