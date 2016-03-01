@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in, except: [:new, :create]
+  skip_before_action :require_logged_in, only: [:new, :create] 
 
   # GET /companies
   # GET /companies.json
@@ -11,7 +11,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-    # @auction = current_user.auctions.all
+    @buyer_auctions = current_user.auctions
+    @bids = current_user.bids
   end
 
   # GET /companies/new

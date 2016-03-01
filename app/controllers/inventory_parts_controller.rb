@@ -1,11 +1,10 @@
 class InventoryPartsController < ApplicationController
   before_action :set_inventory_part, only: [:show, :edit, :update, :destroy]
 
-
   # GET /inventory_parts
   # GET /inventory_parts.json
   def index
-    @inventory_parts = InventoryPart.all
+    @inventory_parts = current_user.inventory_parts
   end
 
   # GET /inventory_parts/1
@@ -33,7 +32,9 @@ class InventoryPartsController < ApplicationController
         build_params(@part_match, @inventory_part)
 
         @inventory_part.part = @part_match
+        @inventory_part.company = current_user
         @inventory_part.save
+
         format.html { redirect_to @inventory_part, notice: 'Inventory part was successfully created.' }
         format.json { render :show, status: :created, location: @inventory_part }
       else

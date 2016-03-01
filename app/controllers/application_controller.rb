@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :require_logged_in
+  before_action :require_logged_in
 
   def current_user
     @current_user ||= Company.find_by(id: session[:company_id])
