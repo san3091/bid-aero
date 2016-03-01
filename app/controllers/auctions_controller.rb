@@ -16,6 +16,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/new
   def new
     @auction = Auction.new
+    @auction_part = AuctionPart.new
   end
 
 # Commented out the edit method
