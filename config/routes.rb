@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'logout' => 'session#destroy'
 
   resources :inventory_parts
-  
+
   resources :companies do
     resources :auctions
   end
