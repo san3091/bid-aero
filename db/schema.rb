@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228233809) do
+ActiveRecord::Schema.define(version: 20160301011538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(version: 20160228233809) do
     t.datetime "updated_at",               null: false
     t.integer  "part_id"
     t.integer  "auction_id"
+    t.integer  "condition_id"
   end
 
   add_index "auction_parts", ["auction_id"], name: "index_auction_parts_on_auction_id", using: :btree
+  add_index "auction_parts", ["condition_id"], name: "index_auction_parts_on_condition_id", using: :btree
   add_index "auction_parts", ["part_id"], name: "index_auction_parts_on_part_id", using: :btree
 
   create_table "auctions", force: :cascade do |t|
@@ -66,6 +68,13 @@ ActiveRecord::Schema.define(version: 20160228233809) do
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
+  create_table "conditions", force: :cascade do |t|
+    t.string   "description"
+    t.string   "two_letter"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "inventory_parts", force: :cascade do |t|
     t.string   "description"
     t.string   "part_num"
@@ -75,10 +84,10 @@ ActiveRecord::Schema.define(version: 20160228233809) do
     t.datetime "updated_at",   null: false
     t.integer  "part_id"
     t.boolean  "in_auction"
-    t.integer  "company_id"
+    t.integer  "condition_id"
   end
 
-  add_index "inventory_parts", ["company_id"], name: "index_inventory_parts_on_company_id", using: :btree
+  add_index "inventory_parts", ["condition_id"], name: "index_inventory_parts_on_condition_id", using: :btree
   add_index "inventory_parts", ["part_id"], name: "index_inventory_parts_on_part_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
@@ -91,11 +100,12 @@ ActiveRecord::Schema.define(version: 20160228233809) do
   end
 
   add_foreign_key "auction_parts", "auctions"
+  add_foreign_key "auction_parts", "conditions"
   add_foreign_key "auction_parts", "parts"
   add_foreign_key "auctions", "companies"
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "companies"
   add_foreign_key "bids", "inventory_parts"
-  add_foreign_key "inventory_parts", "companies"
+  add_foreign_key "inventory_parts", "conditions"
   add_foreign_key "inventory_parts", "parts"
 end

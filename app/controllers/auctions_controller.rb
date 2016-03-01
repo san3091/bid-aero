@@ -13,13 +13,13 @@ class AuctionsController < ApplicationController
   # GET /auctions/1.json
   def show
     @top_bid = @auction.bids.first
-    @bid = current_user.bids
+    
   end
 
   # GET /auctions/new
   def new
     @auction = Auction.new
-    @company = current_user
+    @auction_part = AuctionPart.new
   end
 
 # Commented out the edit method

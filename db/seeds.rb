@@ -15,3 +15,4 @@ parts_database = [
 parts_database.each do |description, partnum, manufacturer, mfgprice|
   Part.create(description: description, part_num: partnum, manufacturer: manufacturer, mfg_price: mfgprice)
 end
+

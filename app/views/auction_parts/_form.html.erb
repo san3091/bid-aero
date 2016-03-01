@@ -1,4 +1,4 @@
-<%= form_for(@auction_part) do |f| %>
+<%= form_for([@auction, @auction_part]) do |f| %>
   <% if @auction_part.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@auction_part.errors.count, "error") %> prohibited this auction_part from being saved:</h2>
@@ -15,7 +15,10 @@
     <%= f.label :part_num %>
     <%= f.text_field :part_num %>
   </div>
-
+  <div>
+    <%= f.label :condition %>
+    <%= f.select :condition, options_for_select(Condition.options.collect { |s| [s[0].humanize, s[0]] }, selected: Condition.options[:corroborated]) %>
+  </div>
   <div class="actions">
     <%= f.submit 'Submit'%>
   </div>
