@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   post 'login' => 'session#create'
   get 'logout' => 'session#destroy'
 
+  resources :inventory_parts
+  
   resources :companies do
     resources :auctions
-    resources :inventory_parts
   end
 
   resources :auctions do
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
     resources :bids
   end
 
-  resources :parts
 
 
   # The priority is based upon order of creation: first created -> highest priority.
