@@ -28,7 +28,7 @@ class AuctionsController < ApplicationController
   # POST /auctions.json
   def create
     @auction = Auction.new(auction_params)
-    @company.auctions << @auction
+    current_user.auctions << @auction
     respond_to do |format|
       if @auction.save
 
