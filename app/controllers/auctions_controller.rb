@@ -5,7 +5,7 @@ class AuctionsController < ApplicationController
   # GET /auctions
   # GET /auctions.json
   def index
-    @auctions = current_user.auctions.all
+    @auctions = company.auctions.all
 
   end
 
@@ -14,6 +14,7 @@ class AuctionsController < ApplicationController
   def show
     @top_bid = @auction.bids.first
     @bid = Bid.where(auction_id: @auction.id)
+
     # @auction_part = AuctionPart.where
   end
 

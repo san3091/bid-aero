@@ -10,8 +10,8 @@
 
   <tbody>
       <tr>
-        <td><%= bid.formatted_price %></td>
-        <td><%= current_user.name %></td>
+        <td><%= number_to_currency bid.amount %></td>
+        <td><%= bid.company.name %></td>
         <td><%= link_to 'Destroy', auction_bid_path(@auction, bid), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 </table>
