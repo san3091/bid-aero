@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228233809) do
+ActiveRecord::Schema.define(version: 20160302003528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 20160228233809) do
     t.integer  "company_id"
   end
 
-  add_index "inventory_parts", ["condition_id"], name: "index_inventory_parts_on_condition_id", using: :btree
   add_index "inventory_parts", ["company_id"], name: "index_inventory_parts_on_company_id", using: :btree
+  add_index "inventory_parts", ["condition_id"], name: "index_inventory_parts_on_condition_id", using: :btree
   add_index "inventory_parts", ["part_id"], name: "index_inventory_parts_on_part_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20160228233809) do
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "companies"
   add_foreign_key "bids", "inventory_parts"
-  add_foreign_key "inventory_parts", "conditions"
   add_foreign_key "inventory_parts", "companies"
+  add_foreign_key "inventory_parts", "conditions"
   add_foreign_key "inventory_parts", "parts"
 end
