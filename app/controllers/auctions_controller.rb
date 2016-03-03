@@ -14,8 +14,6 @@ class AuctionsController < ApplicationController
   def show
     @top_bid = @auction.bids.first
     @bid = Bid.where(auction_id: @auction.id)
-
-    # @auction_part = AuctionPart.where
   end
 
   # GET /auctions/new

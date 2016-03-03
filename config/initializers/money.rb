@@ -64,8 +64,8 @@ MoneyRails.configure do |config|
   # Example:
   #
   config.default_format = {
-    :no_cents_if_whole => false,
-    
+    :no_cents_if_whole => false
+
   }
 
   # Set default raise_error_on_money_parsing option
