@@ -5,8 +5,7 @@ class AuctionsController < ApplicationController
   # GET /auctions
   # GET /auctions.json
   def index
-    @auctions = company.auctions.all
-
+    @auctions = Auction.where(company_id: params[:id]) 
   end
 
   # GET /auctions/1

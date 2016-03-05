@@ -38,7 +38,7 @@ class InventoryPartsController < ApplicationController
         format.html { redirect_to @inventory_part, notice: 'Inventory part was successfully created.' }
         format.json { render :show, status: :created, location: @inventory_part }
       else
-        format.html { redirect_to new_inventory_part_path }
+        format.html { redirect_to new_inventory_part_path, notice: 'That part does not exist in our database.' }
         format.json { render json: @inventory_part.errors, status: :unprocessable_entity }
       end
     end
